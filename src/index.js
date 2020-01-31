@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/status', async (req, res) => {
-  res.send('Year! Lets Rock 🤘🤘🤘🤘🤘')
+  res.send('Year! Lets Rock !!!')
 })
 
 
@@ -24,5 +24,5 @@ app.use('/api', initializeRoutes(router))
 
 app.listen({ port: PORT }, async () => {
   await connect()
-  console.log(`🚀 Server ready at http://localhost:${PORT}`)
+  console.log(`Server ready at http://localhost:${PORT}`)
 })

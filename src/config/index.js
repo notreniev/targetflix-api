@@ -1,6 +1,6 @@
 export default {
   db: {
-    url: 'mongodb://tomhanks:tomhanks123@ds151007.mlab.com:51007/ttflix',
+    url: 'mongodb://tomhanks:tomhanks123@localhost:27017/ttflix',
     name: 'ttflix'
   },
   secret: {

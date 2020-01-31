@@ -1,10 +1,17 @@
+import * as controller from './controller'
 
-export const getAll = async (req, res) => {
-  try {
-    const result = await getAllUser()
-    res.send(result)
-  } catch (error) {
-    console.log(error)
-    res.status(400).send(error)
-  }
-}
+import authenticate from '../../middlewares/authenticate'
+
+export const init = router => {
+  router
+    .route('/users')
+    .get(controller.getAll)
+
+    router
+    .route('/users/liked')
+    .get(authenticate, controller.getLikeds)
+
+    router
+    .route('/users/like')
+    .post(authenticate, controller.like)
+} 

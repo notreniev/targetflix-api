@@ -1,15 +1,38 @@
-import * as controller from './controller'
+import * as service from './services'
+import * as userRespo from '../../repositories/users'
 
-export const init = router => {
-  router
-    .route('/users')
-    .get(controller.getAll)
+export const getAll = async (req, res) => {
+  try {
+    const result = await getAllUser()
+    res.send(result)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error)
+  }
 
-    router
-    .route('/users/liked')
-    .get(controller.getAll)
+}
+export const like = async (req, res) => {
+  const { currentUser, body } = req
+  console.log('showId', body.showId)
+  try {
+    const result = await service.like({
+      email: currentUser,
+      showId: body.showId
+    })
+    res.send(result)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error)
+  }
+}
 
-    router
-    .route('/users/like')
-    .get(controller.getAll)
+export const  getLikeds = async (req, res) => {
+  const { currentUser } = req
+  try {
+    const user = await userRespo.findByEmail(currentUser)
+    res.send(user.shows)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error)
+  }
 }

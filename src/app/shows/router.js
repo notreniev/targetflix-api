@@ -1,8 +1,8 @@
 import * as controller from './controller'
-
+import authenticate from '../../middlewares/authenticate'
 
 export const init = router => {
   router
-    .route('/movies')
-    .get(authenticate, controller.getMovies)
+    .route('/shows')
+    .get(authenticate, controller.getShows)
 }
